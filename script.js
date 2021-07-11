@@ -117,12 +117,12 @@ welcome.style({
 
 main.child(header, welcome, projects, about, contact);
 
-setTimeout(() => {
-  inform('Copied');
-}, 500);
-setTimeout(() => {
-  inform('Amo');
-}, 1500);
+// setTimeout(() => {
+//   inform('Copied');
+// }, 500);
+// setTimeout(() => {
+//   inform('Amo');
+// }, 1500);
 
 setTimeout(() => {
   const ellie = new Elevator();

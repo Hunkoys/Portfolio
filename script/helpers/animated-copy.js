@@ -1,4 +1,4 @@
-import { SuperDom } from '../../lib/superdom.js';
+import dom, { SuperDom } from '../../lib/superdom.js';
 
 class Force {
   constructor(velocity, acceleration) {
@@ -43,27 +43,36 @@ fuse.reset = () => (threshold = 500);
 function animate(superdom) {
   const parent = new SuperDom(superdom.element.parentElement);
   const clone = new SuperDom(superdom.element.cloneNode(true));
-  clone.style({
+  const box = dom.div(clone).style({
     position: 'absolute',
     top: 0,
     left: 0,
     pointerEvents: 'none',
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'center',
+  });
+  clone.style({
+    transition: 'opacity 540ms, letter-spacing 340ms',
     opacity: 1,
-    transition: 'opacity 540ms',
     // willChange: 'transform',
   });
 
-  parent.append(clone);
+  parent.append(box);
 
   const origin = documentPosition(clone);
-  const width = (origin.right - origin.left) / 2;
+  const offset = (origin.right - origin.left) / 2;
   const destination = { x: 0, y: 0 };
+  let scaleUnit = 1;
 
   const pop = new Force(5, -0.3).vector(() => [0, -300]);
-  const follow = new Force(1, (vel) => vel * 1.3).vector(() => [
-    mouseX - (origin.x + destination.x) - width,
-    mouseY - (origin.y + destination.y),
-  ]);
+  const follow = new Force(1, (vel) => vel * 1.3).vector(() => {
+    if (scaleUnit > 0) scaleUnit -= 0.02;
+    const x = mouseX - (origin.x + destination.x) - offset;
+    const y = mouseY - (origin.y + destination.y);
+    if (Math.abs(x) < 1 || Math.abs(y) < 1) forces.shift();
+    return [x, y];
+  });
 
   const forces = [pop];
 
@@ -73,22 +82,15 @@ function animate(superdom) {
       forces.push(follow);
       clone.style({
         opacity: 0,
+        letterSpacing: '-12px',
       });
     }
-
     pushed = true;
   }
 
   pop.onApply(({ v }) => {
     if (v > -1) pushFollow();
     if (v >= 0) forces.shift();
-  });
-
-  let scaleUnit = 1;
-  follow.onApply(({ h, v }) => {
-    if (scaleUnit > 0) scaleUnit -= 0.02;
-    console.log(h, v);
-    if (h === 0 && v === 0) forces.shift();
   });
 
   function frame() {
@@ -98,14 +100,17 @@ function animate(superdom) {
 
     const translate = `translate(${destination.x}px, ${destination.y}px)`;
     const scale = `scale(${scaleUnit})`;
-    clone.style({
+    box.style({
       transform: translate + scale,
     });
 
     // if (!fuse()) return;
 
-    if (forces.length) requestAnimationFrame(frame);
-    else parent.remove(clone);
+    if (forces.length) {
+      requestAnimationFrame(frame);
+    } else {
+      parent.remove(box);
+    }
   }
 
   requestAnimationFrame(frame);
@@ -114,7 +119,7 @@ function animate(superdom) {
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(
     function () {
-      inform('Copied');
+      // inform('Copied');
     },
     function () {
       /* clipboard write failed */
