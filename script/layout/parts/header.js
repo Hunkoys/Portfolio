@@ -1,9 +1,9 @@
 import dom from '../../../lib/superdom.js';
-import theme from '../theme.js';
+import theme, { font } from '../theme.js';
 import Nav from './header/Nav.js';
 
 const title = dom
-  .a('/', dom.h1('Dominic Victoria').style({ fontSize: '24px', color: '#434343' }))
+  .a('/', dom.h1('Dominic Victoria').style({ fontSize: font.m, color: '#434343' }))
   .style({ textDecoration: 'none' });
 
 export const navOptions = {
@@ -24,8 +24,8 @@ const nav = Nav(navOptions)
     height: '65px',
   })
   .optionStyle({
-    fontSize: '16px',
-    fontWeight: 'bold',
+    fontSize: font.s,
+    fontWeight: font.bold,
     padding: '15px',
     color: '#858585',
     cursor: 'pointer',
@@ -33,7 +33,7 @@ const nav = Nav(navOptions)
     zIndex: 1,
   })
   .selectedStyle({
-    color: 'white',
+    color: theme.accentText,
     borderRadius: '40px',
   });
 

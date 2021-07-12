@@ -19,11 +19,11 @@ const theme = light;
 export default theme;
 
 export const font = {
-  s: '16px',
-  m: '24px',
-  l: '32px',
-  xl: '48px',
-  xxl: '72px',
+  s: '11px',
+  m: '17px',
+  l: '23px',
+  xl: '34px',
+  xxl: '51px',
   regular: '400',
   bold: '700',
   extrabold: '900',
