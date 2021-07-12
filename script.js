@@ -12,7 +12,7 @@ import inform from './script/helpers/inform.js';
 inform.init();
 window.inform = inform;
 
-let screenH = window.innerHeight;
+let screenH = window.innerHeight; // LESSON: Exactly what we need the Prop Class for. Still don't know what to call that pattern. I guess reactive object
 window.addEventListener('resize', () => {
   screenH = window.innerHeight;
   welcome.style({ height: `${screenH}px` });
@@ -59,7 +59,10 @@ function headerShadowControl() {
 }
 
 document.addEventListener('scroll', headerShadowControl);
-window.onload = headerShadowControl;
+window.onload = () => {
+  header.nav.setOffset(header.rect.left);
+  headerShadowControl();
+};
 
 // ----------------
 // WELCOME
