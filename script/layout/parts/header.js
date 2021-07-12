@@ -16,17 +16,17 @@ export const navOptions = {
 const nav = Nav(navOptions)
   .style({
     display: 'flex',
-    justifyContent: 'space-around',
-    width: '525px',
+    justifyContent: 'space-between',
+    width: '395px',
     borderRadius: '32px',
-    background: '#ececec',
-    padding: '6px',
-    height: '65px',
+    background: '#33333320',
+    padding: '4px',
+    height: '45px',
   })
   .optionStyle({
     fontSize: font.s,
     fontWeight: font.bold,
-    padding: '15px',
+    padding: '1px 12px',
     color: '#858585',
     cursor: 'pointer',
     letterSpacing: '1px',
@@ -34,14 +34,13 @@ const nav = Nav(navOptions)
   })
   .selectedStyle({
     color: theme.accentText,
-    borderRadius: '40px',
   });
 
 nav.floater
   .style({
     color: 'white',
     borderRadius: '40px',
-    height: '54px',
+    height: '37px',
     width: '50px',
     position: 'absolute',
     zIndex: 0,
@@ -54,8 +53,8 @@ nav.floater
 const LinkIcon = (href, name) =>
   dom.a(
     href,
-    dom.img(`icons/${name}.png`, name).width(34).height(34).style({
-      margin: '0 10px',
+    dom.img(`icons/${name}.png`, name, 24, 24).style({
+      margin: '0 8px',
     })
   );
 
@@ -65,7 +64,12 @@ const links = dom
     LinkIcon('https://github.com/Hunkoys', 'github'),
     LinkIcon('https://stackoverflow.com/users/2860935/hunkoys', 'stackoverflow')
   )
-  .style({ display: 'flex' });
+  .style({
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    width: '130px',
+  });
 
 const headerTiming = '400ms ease-in-out';
 
@@ -80,7 +84,7 @@ const header = dom
     background: `${theme.background}D9`,
     webkitBackdropFilter: 'saturate(180%) blur(20px)',
     backdropFilter: 'saturate(180%) blur(20px)',
-    borderRadius: '0 0 58px 58px',
+    borderRadius: '0 0 36px 36px',
     transition: `box-shadow ${headerTiming}`,
   })
   .onLoad((bar) => {

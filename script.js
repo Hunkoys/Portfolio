@@ -25,13 +25,15 @@ const margin = 160;
 
 // Header
 
-const headerMargin = margin / 2;
+const headerMargin = margin * 0.3;
 const headerPadding = headerMargin;
 
 header.style({
-  width: `calc(100% - ${parseInt(headerMargin) * 2}px)`,
-  padding: `16px ${headerPadding}px`,
-  // margin: `0 ${headerMargin}px`,
+  width: '90%',
+  height: '',
+  minWidth: '1000px',
+  maxWidth: '1300px',
+  padding: `8px ${headerPadding}px`,
   margin: 'auto',
 });
 
@@ -39,6 +41,7 @@ document.addEventListener('scroll', () => {
   const noShadow = {
     boxShadow: '',
     background: 'none',
+    webkitBackdropFilter: 'none',
     backdropFilter: 'none',
   };
 
