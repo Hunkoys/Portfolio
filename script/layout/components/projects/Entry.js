@@ -16,7 +16,7 @@ function Entry({ title, classification, description, technologies = [], page, re
     marginRight: '130px',
     padding: '60px 0',
     height: '100%',
-    width: '500px',
+    width: '330px',
   });
 
   const entry = dom
@@ -26,8 +26,10 @@ function Entry({ title, classification, description, technologies = [], page, re
     )
     .style({
       display: 'flex',
+      justifyContent: 'flex-start',
       padding: '260px 0',
-      height: '1080px',
+      height: '960px',
+      width: '930px',
     });
 
   return entry;
@@ -44,14 +46,14 @@ function Classification(text) {
   return dom.h4(text).style({
     fontSize: font.l,
     fontWeight: font.bold,
-    marginBottom: '48px',
+    marginBottom: '34px',
   });
 }
 
 function Description(text) {
   return dom.p(text).style({
     fontSize: font.m,
-    marginBottom: '25px',
+    marginBottom: '16px',
   });
 }
 
@@ -61,11 +63,12 @@ function Technology(text, color) {
     alignItems: 'center',
     justifyContent: 'center',
     background: color,
-    padding: '10px',
-    marginRight: '12px',
-    height: '24px',
-    borderRadius: '6px',
-    color: `${theme.accentText}DD`,
+    padding: '8px',
+    marginRight: '7px',
+    height: '16px',
+    borderRadius: '4px',
+    fontSize: font.s,
+    color: `${theme.accentText}F0`,
   });
 }
 
@@ -90,13 +93,12 @@ function Link(text, icon, url) {
       }),
       dom.span(text)
     )
-    .target('_blank')
     .style({
       display: 'flex',
       alignItems: 'center',
 
-      padding: '0 30px',
-      height: '45px',
+      padding: '0 20px',
+      height: '37px',
       borderRadius: '100px',
       fontSize: font.s,
       textDecoration: 'none',
