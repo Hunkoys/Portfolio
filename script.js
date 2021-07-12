@@ -8,6 +8,20 @@ import projects from './script/layout/screens/projects.js';
 import welcome from './script/layout/screens/welcome.js';
 import theme, { font } from './script/layout/theme.js';
 
+import inform from './script/helpers/inform.js';
+
+inform.init();
+window.inform = inform;
+
+// const informList = ['shit bruh', 'gago', '__________'];
+// let time = 0;
+// for (const info of informList) {
+//   setTimeout(() => {
+//     inform(info);
+//   }, time);
+//   time += 500;
+// }
+
 // min desktop width 1400px
 
 const main = new SuperDom(document.getElementById('main'));
@@ -50,79 +64,7 @@ welcome.style({
   padding: `0 ${margin}px`,
 });
 
-// ----------------
-// ABOUT
-
-// const info = dom
-//   .div()
-//   .style({
-//     display: 'flex',
-//     justifyContent: 'center',
-//     position: 'fixed',
-//     top: '100vh',
-//     width: '100vw',
-//     pointerEvents: 'none',
-//     opacity: 1,
-//     transition: 'top 1000ms cubic-bezier(0.2, 1, 0.2, 1), opacity 1000ms',
-//   })
-//   .child(
-//     dom.div().style({
-//       display: 'flex',
-//       alignItems: 'center',
-//       justifyContent: 'center',
-//       background: '#88888870',
-//       color: 'white',
-//       height: '80px',
-//       width: '200px',
-//       borderRadius: '40px',
-//       fontSize: font.l,
-//     })
-//   );
-
-// let fade;
-// window.inform = (text) => {
-//   clearTimeout(fade);
-//   main.remove(info);
-//   info.style({
-//     top: '100vh',
-//     opacity: 1,
-//   });
-//   main.append(info);
-//   info.element.firstElementChild.innerText = text;
-
-//   info.style({});
-
-//   setTimeout(() => {
-//     info.style({
-//       top: '85vh',
-//     });
-//   }, 0);
-
-//   fade = setTimeout(() => {
-//     info.style({
-//       opacity: 0,
-//     });
-
-//     setTimeout(() => {
-//       main.remove(info);
-//       info.style({
-//         top: '90vh',
-//         opacity: 1,
-//       });
-//       main.append(info);
-//     }, 500);
-//   }, 500);
-// };
-// ----------------
-
 main.child(header, welcome, projects, about, contact);
-
-// setTimeout(() => {
-//   inform('Copied');
-// }, 500);
-// setTimeout(() => {
-//   inform('Amo');
-// }, 1500);
 
 setTimeout(() => {
   const ellie = new Elevator();

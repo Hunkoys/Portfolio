@@ -119,7 +119,7 @@ function animate(superdom) {
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(
     function () {
-      // inform('Copied');
+      inform('Copied!');
     },
     function () {
       /* clipboard write failed */
