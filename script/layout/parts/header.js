@@ -11,7 +11,7 @@ const title = dom
 export const navOptions = {
   welcome: 'WELCOME',
   projects: 'PROJECTS',
-  about: 'ABOUT',
+  goal: 'GOAL',
   contact: 'CONTACT',
 };
 

@@ -2,7 +2,7 @@ import './lib/standard.js';
 import dom, { SuperDom } from './lib/superdom.js';
 import Elevator from './script/helpers/Elevator.js';
 import header from './script/layout/parts/header.js';
-import about from './script/layout/screens/about.js';
+import goal from './script/layout/screens/goal.js';
 import contact from './script/layout/screens/contact.js';
 import projects from './script/layout/screens/projects.js';
 import welcome from './script/layout/screens/welcome.js';
@@ -22,7 +22,7 @@ const main = new SuperDom(document.getElementById('main'));
 const screens = {
   WELCOME: welcome,
   PROJECTS: projects,
-  ABOUT: about,
+  GOAL: goal,
   CONTACT: contact,
 };
 
@@ -88,7 +88,7 @@ main.child(
     }),
   welcome,
   projects,
-  about,
+  goal,
   contact
 );
 
