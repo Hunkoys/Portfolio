@@ -70,7 +70,7 @@ window.onload = () => {
 welcome.style({
   width: '100vw',
   height: `${screenH}px`,
-  minHeight: '800px',
+  minHeight: '700px',
   maxHeight: '1200px',
   transition: 'height 600ms',
 });

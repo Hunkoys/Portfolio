@@ -13,7 +13,8 @@ function Entry({ title, classification, description, technologies = [], page, re
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    marginRight: '130px',
+    flexShrink: 0,
+    marginRight: '80px',
     padding: '60px 0',
     height: '100%',
     width: '330px',
@@ -27,9 +28,11 @@ function Entry({ title, classification, description, technologies = [], page, re
     .style({
       display: 'flex',
       justifyContent: 'flex-start',
-      padding: '260px 0',
-      height: '960px',
-      width: '930px',
+      padding: '120px 0',
+      // margin: '100px 0',
+      height: '670px',
+      width: '75%',
+      maxWidth: '1030px',
     });
 
   return entry;

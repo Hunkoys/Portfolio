@@ -32,6 +32,7 @@ const SimpleTimer = Entry({
   page: 'https://hunkoys.github.io/Timer/',
   repo: 'https://github.com/Hunkoys/Timer',
   gallery: dom.img('pics/simple-timer.jpg', 'Simple Timer screenshots', 435, 429).style({
+    marginLeft: '60px',
     borderRadius: '39px',
     boxShadow: '4px 4px 37px #00000033',
   }),
