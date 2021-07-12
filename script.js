@@ -68,7 +68,7 @@ window.onload = () => {
 // WELCOME
 
 welcome.style({
-  width: '100vw',
+  width: '98vw',
   height: `${screenH}px`,
   minHeight: '700px',
   maxHeight: '1200px',

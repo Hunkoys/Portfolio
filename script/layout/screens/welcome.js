@@ -8,7 +8,7 @@ import theme, { font } from '../theme.js';
 const greeting = dom.span('Hi.').style({
   fontSize: '288px',
   fontWeight: 'bold',
-  marginLeft: '-15px',
+  marginLeft: '-13px',
 });
 
 const introduction = dom
