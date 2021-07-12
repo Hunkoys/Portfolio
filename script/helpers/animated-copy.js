@@ -122,7 +122,7 @@ function copyToClipboard(text) {
       inform('Copied!');
     },
     function () {
-      /* clipboard write failed */
+      inform('Copy Failed!');
     }
   );
 }
