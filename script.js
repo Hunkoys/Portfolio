@@ -7,11 +7,16 @@ import contact from './script/layout/screens/contact.js';
 import projects from './script/layout/screens/projects.js';
 import welcome from './script/layout/screens/welcome.js';
 import theme, { font } from './script/layout/theme.js';
-
 import inform from './script/helpers/inform.js';
 
 inform.init();
 window.inform = inform;
+
+let screenH = window.innerHeight;
+window.addEventListener('resize', () => {
+  screenH = window.innerHeight;
+  welcome.style({ height: `${screenH}px` });
+});
 
 const main = new SuperDom(document.getElementById('main'));
 const screens = {
@@ -21,47 +26,63 @@ const screens = {
   CONTACT: contact,
 };
 
-const margin = 160;
-
 // Header
 
-const headerMargin = margin * 0.3;
-const headerPadding = headerMargin;
+window.headerPadding = 48;
 
 header.style({
   width: '90%',
-  height: '',
   minWidth: '1000px',
   maxWidth: '1300px',
   padding: `8px ${headerPadding}px`,
   margin: 'auto',
 });
 
-document.addEventListener('scroll', () => {
+function headerShadowControl() {
   const noShadow = {
     boxShadow: '',
     background: 'none',
     webkitBackdropFilter: 'none',
     backdropFilter: 'none',
   };
+  const noBar = {
+    background: 'none',
+  };
 
-  if (scrollY < 200) header.style(noShadow);
-  else header.removeStyle(noShadow);
-});
+  if (scrollY < 200) {
+    header.nav.style(noBar);
+    header.style(noShadow);
+  } else {
+    header.nav.removeStyle(noBar);
+    header.removeStyle(noShadow);
+  }
+}
+
+document.addEventListener('scroll', headerShadowControl);
+window.onload = headerShadowControl;
 
 // ----------------
 // WELCOME
 
 welcome.style({
-  padding: `0 ${margin}px`,
+  width: '100vw',
+  height: `${screenH}px`,
+  minHeight: '800px',
+  maxHeight: '1200px',
+  transition: 'height 600ms',
 });
 
 main.child(
-  dom.div(header).style({
-    zIndex: 100,
-    width: '100%',
-    position: 'fixed',
-  }),
+  dom
+    .div(header)
+    .style({
+      zIndex: 100,
+      width: '100%',
+      position: 'fixed',
+    })
+    .onResize(() => {
+      header.nav.setOffset(header.rect.left);
+    }),
   welcome,
   projects,
   about,
@@ -73,6 +94,7 @@ setTimeout(() => {
 
   ellie.track(screens);
   ellie.onCross((screen) => {
+    header.nav.setOffset(header.rect.left); // LESSON: Just recalc this from nav's on move
     header.nav.nudge(screen);
   });
 

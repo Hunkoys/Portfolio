@@ -2,6 +2,8 @@ import dom from '../../../lib/superdom.js';
 import theme, { font } from '../theme.js';
 import Nav from './header/Nav.js';
 
+const headerTiming = '400ms ease-in-out';
+
 const title = dom
   .a('/', dom.h1('Dominic Victoria').style({ fontSize: font.m, color: '#434343' }))
   .style({ textDecoration: 'none' });
@@ -22,6 +24,7 @@ const nav = Nav(navOptions)
     background: '#33333320',
     padding: '4px',
     height: '45px',
+    transition: `background ${headerTiming}`,
   })
   .optionStyle({
     fontSize: font.s,
@@ -71,8 +74,6 @@ const links = dom
     width: '130px',
   });
 
-const headerTiming = '400ms ease-in-out';
-
 const header = dom
   .div(title, nav, links)
   .style({
@@ -87,14 +88,10 @@ const header = dom
     borderRadius: '0 0 36px 36px',
     transition: `box-shadow ${headerTiming}`,
   })
-  .onLoad((bar) => {
+  .onLoad(() => {
     setTimeout(() => {
-      nav.setOffset(bar.rect.left);
+      nav.setOffset(header.rect.left);
     }, 2000);
-  })
-  .onResize((bar) => {
-    console.log(bar.rect.left);
-    nav.setOffset(bar.rect.left);
   })
   .id('header');
 

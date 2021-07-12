@@ -1,11 +1,14 @@
 import dom from '../../../lib/superdom.js';
 import theme, { font } from '../theme.js';
 
+// LESSON: Don't export instances unless you can modify them from the import
+
 // Content
 
 const greeting = dom.span('Hi.').style({
   fontSize: '288px',
   fontWeight: 'bold',
+  marginLeft: '-15px',
 });
 
 const introduction = dom
@@ -26,6 +29,11 @@ const rightGroup = dom.div(introduction, chatButton).style({
 
 const content = dom.section(greeting, rightGroup).style({
   display: 'flex',
+  width: '90%',
+  minWidth: '1000px',
+  maxWidth: '1300px',
+  margin: 'auto',
+  padding: '0 48px',
 });
 
 // Content
@@ -39,7 +47,7 @@ let line = 0;
 const background = dom
   .div(
     BigText('INNOVATE * CHANGE', -190),
-    BigText('DOMINIC VICTORIA', -170).style({ color: '#6CCCDB', opacity: 0.07 }),
+    BigText('DOMINIC VICTORIA', -170, '#6CCCDB', 0.09),
     BigText('SOFTWARE DEVELOPER', -1050),
     BigText('THAT IS ACTUALLY THE DREAM ~ KOBE', -2000)
   )
@@ -60,9 +68,6 @@ const screen = dom.article(content, background).style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  height: '100vh',
-  minHeight: '900px',
-  maxHeight: '1200px',
 });
 
 export default screen;
@@ -91,19 +96,20 @@ function ChatButton(text, icon) {
   });
 }
 
-function BigText(text, offset) {
+function BigText(text, offset, color = theme.text, opacity = 0.03) {
   const textHeight = fontSize * 0.75;
 
   const sdom = dom.span(text).style({
     position: 'absolute',
-    opacity: 0.01,
+    opacity: opacity,
     left: `${offset}px`,
     top: `${line}px`,
 
     whiteSpace: 'nowrap',
     fontSize: `${fontSize}px`,
     fontWeight: 'bold',
-    color: 'black',
+    color: `${color}`,
+    textShadow: `${color} 0 0 10px, ${color} 0 0 20px, ${color} 0 0 40px`,
   });
 
   line += textHeight + gap;
