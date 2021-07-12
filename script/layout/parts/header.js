@@ -75,7 +75,7 @@ const header = dom
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    position: 'fixed',
+    position: 'relative',
     boxShadow: '0 8px 124px #959da521',
     background: `${theme.background}D9`,
     webkitBackdropFilter: 'saturate(180%) blur(20px)',
@@ -89,6 +89,7 @@ const header = dom
     }, 2000);
   })
   .onResize((bar) => {
+    console.log(bar.rect.left);
     nav.setOffset(bar.rect.left);
   })
   .id('header');

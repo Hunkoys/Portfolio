@@ -13,17 +13,6 @@ import inform from './script/helpers/inform.js';
 inform.init();
 window.inform = inform;
 
-// const informList = ['shit bruh', 'gago', '__________'];
-// let time = 0;
-// for (const info of informList) {
-//   setTimeout(() => {
-//     inform(info);
-//   }, time);
-//   time += 500;
-// }
-
-// min desktop width 1400px
-
 const main = new SuperDom(document.getElementById('main'));
 const screens = {
   WELCOME: welcome,
@@ -40,10 +29,10 @@ const headerMargin = margin / 2;
 const headerPadding = headerMargin;
 
 header.style({
-  zIndex: 100,
   width: `calc(100% - ${parseInt(headerMargin) * 2}px)`,
   padding: `16px ${headerPadding}px`,
-  margin: `0 ${headerMargin}px`,
+  // margin: `0 ${headerMargin}px`,
+  margin: 'auto',
 });
 
 document.addEventListener('scroll', () => {
@@ -64,7 +53,17 @@ welcome.style({
   padding: `0 ${margin}px`,
 });
 
-main.child(header, welcome, projects, about, contact);
+main.child(
+  dom.div(header).style({
+    zIndex: 100,
+    width: '100%',
+    position: 'fixed',
+  }),
+  welcome,
+  projects,
+  about,
+  contact
+);
 
 setTimeout(() => {
   const ellie = new Elevator();
