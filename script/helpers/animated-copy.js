@@ -82,7 +82,7 @@ function animate(superdom) {
       forces.push(follow);
       clone.style({
         opacity: 0,
-        letterSpacing: '-12px',
+        letterSpacing: '-8px',
       });
     }
     pushed = true;
