@@ -17,12 +17,6 @@ const email = Email();
 
 const openApp = Button('OPEN MAIL APP', 'icons/open-out.png', 'mailto:dominicvictoriadev@gmail.com');
 const copy = Button('COPY', 'icons/copy.png').onClick(() => {
-  // const email = Email().style({
-  //   position: 'absolute',
-  //   top: 0,
-  //   left: 0,
-  // });
-  // emailBox.append(email);
   animatedCopy(email);
 });
 
@@ -33,7 +27,7 @@ const emailBox = dom.div(email).style({
 const buttonGroup = dom.div(openApp, copy).style({
   display: 'flex',
   justifyContent: 'space-between',
-  width: '300px',
+  width: '250px',
 });
 
 const screen = dom.section(emailBox, buttonGroup).style({
@@ -42,8 +36,8 @@ const screen = dom.section(emailBox, buttonGroup).style({
   alignItems: 'center',
   justifyContent: 'center',
   height: '100vh',
-  minHeight: '900px',
-  maxHeight: '1200px',
+  minHeight: '500px',
+  maxHeight: '1000px',
   background: 'linear-gradient(111.19deg, #313637 17.69%, #262A2B 81.29%)',
 });
 

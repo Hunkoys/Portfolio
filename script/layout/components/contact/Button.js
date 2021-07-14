@@ -13,6 +13,8 @@ function Button(text, icon, src) {
     )
     .style({
       display: 'flex',
+      alignItems: 'center',
+      padding: '10px',
       fontSize: font.s,
       fontWeight: font.bold,
       color: theme.subtleText,

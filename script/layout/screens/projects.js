@@ -21,7 +21,7 @@ const ColorColor = Entry({
   technologies: [react, jsx, sass, express, socketio],
   page: 'https://www.dominicvictoria.com/color-color/',
   repo: 'https://github.com/Hunkoys/color-color-react-1-client',
-  gallery: dom.img('pics/color-color.png', `Color Color screenshots`).style({}),
+  gallery: dom.img('pics/color-color.png', `Color Color screenshots`, 569, 471),
 });
 
 const SimpleTimer = Entry({
@@ -31,7 +31,8 @@ const SimpleTimer = Entry({
   technologies: [html, css, js],
   page: 'https://hunkoys.github.io/Timer/',
   repo: 'https://github.com/Hunkoys/Timer',
-  gallery: dom.img('pics/simple-timer.png', 'Simple Timer screenshots', 626).style({
+  gallery: dom.img('pics/simple-timer.jpg', 'Simple Timer screenshots', 435, 429).style({
+    marginLeft: '60px',
     borderRadius: '39px',
     boxShadow: '4px 4px 37px #00000033',
   }),

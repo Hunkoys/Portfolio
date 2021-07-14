@@ -2,133 +2,104 @@ import './lib/standard.js';
 import dom, { SuperDom } from './lib/superdom.js';
 import Elevator from './script/helpers/Elevator.js';
 import header from './script/layout/parts/header.js';
-import about from './script/layout/screens/about.js';
+import goal from './script/layout/screens/goal.js';
 import contact from './script/layout/screens/contact.js';
 import projects from './script/layout/screens/projects.js';
 import welcome from './script/layout/screens/welcome.js';
 import theme, { font } from './script/layout/theme.js';
+import inform from './script/helpers/inform.js';
 
-// min desktop width 1400px
+inform.init();
+window.inform = inform;
 
-const main = new SuperDom(document.getElementById('main'));
+let screenH = window.innerHeight; // LESSON: Exactly what we need the Prop Class for. Still don't know what to call that pattern. I guess reactive object
+window.addEventListener('resize', () => {
+  screenH = window.innerHeight;
+  welcome.style({ height: `${screenH}px` });
+});
+
+const main = new SuperDom(document.getElementById('main')).style({
+  minWidth: '1260px',
+});
 const screens = {
   WELCOME: welcome,
   PROJECTS: projects,
-  ABOUT: about,
+  GOAL: goal,
   CONTACT: contact,
 };
 
-const margin = 160;
-
 // Header
 
-const headerMargin = margin / 2;
-const headerPadding = headerMargin;
+const headerPadding = 48;
 
 header.style({
-  zIndex: 100,
-  width: `calc(100% - ${parseInt(headerMargin) * 2}px)`,
-  padding: `16px ${headerPadding}px`,
-  margin: `0 ${headerMargin}px`,
+  width: '90%',
+  minWidth: '1000px',
+  maxWidth: '1300px',
+  padding: `8px ${headerPadding}px`,
+  margin: 'auto',
 });
 
-document.addEventListener('scroll', () => {
+function headerShadowControl() {
   const noShadow = {
     boxShadow: '',
     background: 'none',
+    webkitBackdropFilter: 'none',
     backdropFilter: 'none',
   };
+  const noBar = {
+    background: 'none',
+  };
 
-  if (scrollY < 200) header.style(noShadow);
-  else header.removeStyle(noShadow);
-});
+  if (scrollY < 200) {
+    header.nav.style(noBar);
+    header.style(noShadow);
+  } else {
+    header.nav.removeStyle(noBar);
+    header.removeStyle(noShadow);
+  }
+}
+
+document.addEventListener('scroll', headerShadowControl);
+window.onload = () => {
+  header.nav.setOffset(header.rect.left);
+  headerShadowControl();
+};
 
 // ----------------
 // WELCOME
 
 welcome.style({
-  padding: `0 ${margin}px`,
+  width: '98vw',
+  height: `${screenH}px`,
+  minHeight: '700px',
+  maxHeight: '1200px',
+  transition: 'height 600ms',
 });
 
-// ----------------
-// ABOUT
-
-// const info = dom
-//   .div()
-//   .style({
-//     display: 'flex',
-//     justifyContent: 'center',
-//     position: 'fixed',
-//     top: '100vh',
-//     width: '100vw',
-//     pointerEvents: 'none',
-//     opacity: 1,
-//     transition: 'top 1000ms cubic-bezier(0.2, 1, 0.2, 1), opacity 1000ms',
-//   })
-//   .child(
-//     dom.div().style({
-//       display: 'flex',
-//       alignItems: 'center',
-//       justifyContent: 'center',
-//       background: '#88888870',
-//       color: 'white',
-//       height: '80px',
-//       width: '200px',
-//       borderRadius: '40px',
-//       fontSize: font.l,
-//     })
-//   );
-
-// let fade;
-// window.inform = (text) => {
-//   clearTimeout(fade);
-//   main.remove(info);
-//   info.style({
-//     top: '100vh',
-//     opacity: 1,
-//   });
-//   main.append(info);
-//   info.element.firstElementChild.innerText = text;
-
-//   info.style({});
-
-//   setTimeout(() => {
-//     info.style({
-//       top: '85vh',
-//     });
-//   }, 0);
-
-//   fade = setTimeout(() => {
-//     info.style({
-//       opacity: 0,
-//     });
-
-//     setTimeout(() => {
-//       main.remove(info);
-//       info.style({
-//         top: '90vh',
-//         opacity: 1,
-//       });
-//       main.append(info);
-//     }, 500);
-//   }, 500);
-// };
-// ----------------
-
-main.child(header, welcome, projects, about, contact);
-
-setTimeout(() => {
-  inform('Copied');
-}, 500);
-setTimeout(() => {
-  inform('Amo');
-}, 1500);
+main.child(
+  dom
+    .div(header)
+    .style({
+      zIndex: 100,
+      width: '100%',
+      position: 'fixed',
+    })
+    .onResize(() => {
+      header.nav.setOffset(header.rect.left);
+    }),
+  welcome,
+  projects,
+  goal,
+  contact
+);
 
 setTimeout(() => {
   const ellie = new Elevator();
 
   ellie.track(screens);
   ellie.onCross((screen) => {
+    header.nav.setOffset(header.rect.left); // LESSON: Just recalc this from nav's on move
     header.nav.nudge(screen);
   });
 

@@ -1,6 +1,6 @@
 import dom from '../../../../lib/superdom.js';
 
-const DEF_SIZE = 260;
+const DEF_SIZE = 220;
 const BORDER_SIZE = 15;
 
 function CircleFrame(src, alt, width = DEF_SIZE, x = 0, y = 0) {
