@@ -19,7 +19,7 @@ window.addEventListener('resize', () => {
 });
 
 const main = new SuperDom(document.getElementById('main')).style({
-  minWidth: '1264px',
+  minWidth: '1260px',
 });
 const screens = {
   WELCOME: welcome,

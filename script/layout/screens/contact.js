@@ -17,12 +17,6 @@ const email = Email();
 
 const openApp = Button('OPEN MAIL APP', 'icons/open-out.png', 'mailto:dominicvictoriadev@gmail.com');
 const copy = Button('COPY', 'icons/copy.png').onClick(() => {
-  // const email = Email().style({
-  //   position: 'absolute',
-  //   top: 0,
-  //   left: 0,
-  // });
-  // emailBox.append(email);
   animatedCopy(email);
 });
 
