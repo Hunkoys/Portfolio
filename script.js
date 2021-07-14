@@ -18,7 +18,9 @@ window.addEventListener('resize', () => {
   welcome.style({ height: `${screenH}px` });
 });
 
-const main = new SuperDom(document.getElementById('main'));
+const main = new SuperDom(document.getElementById('main')).style({
+  minWidth: '1264px',
+});
 const screens = {
   WELCOME: welcome,
   PROJECTS: projects,
