@@ -17,7 +17,7 @@ const introduction = dom
     fontSize: font.l,
   });
 
-const chatButton = ChatButton('CHAT', 'icons/send.png');
+const chatButton = ChatButton('EMAIL', 'icons/mail.png');
 
 const rightGroup = dom.div(introduction, chatButton).style({
   display: 'flex',
@@ -70,6 +70,8 @@ const screen = dom.article(content, background).style({
   justifyContent: 'center',
 });
 
+screen.chatButton = chatButton;
+
 export default screen;
 
 // Screen
@@ -80,16 +82,17 @@ function ChatButton(text, icon) {
     fontSize: font.m,
     color: theme.accentText,
   });
-  const iconElement = dom.img(icon, 'chat icon', 30);
+  const iconElement = dom.img(icon, 'chat icon');
 
-  return dom.button(textElement, iconElement).style({
+  return dom.button(iconElement, textElement).style({
     background: theme.action,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    width: '113px',
+    justifyContent: 'space-between',
+    width: '130px',
     height: '45px',
-    paddingLeft: '5px',
+    // paddingLeft: '5px',
+    padding: '20px',
     borderRadius: '28px',
     fontWeight: 'bold',
     letterSpacing: '1px',

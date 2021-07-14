@@ -107,6 +107,10 @@ setTimeout(() => {
     ellie.scroll(value);
   });
 
+  welcome.chatButton.onClick(() => {
+    ellie.scroll('CONTACT');
+  });
+
   setTimeout(() => {
     header.nav.floater.style({
       background: theme.accent,
