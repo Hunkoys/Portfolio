@@ -30,7 +30,7 @@ const screens = {
 
 // Header
 
-window.headerPadding = 48;
+const headerPadding = 48;
 
 header.style({
   width: '90%',

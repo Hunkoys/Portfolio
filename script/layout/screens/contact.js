@@ -27,7 +27,7 @@ const emailBox = dom.div(email).style({
 const buttonGroup = dom.div(openApp, copy).style({
   display: 'flex',
   justifyContent: 'space-between',
-  width: '220px',
+  width: '250px',
 });
 
 const screen = dom.section(emailBox, buttonGroup).style({
@@ -36,8 +36,8 @@ const screen = dom.section(emailBox, buttonGroup).style({
   alignItems: 'center',
   justifyContent: 'center',
   height: '100vh',
-  minHeight: '900px',
-  maxHeight: '1200px',
+  minHeight: '500px',
+  maxHeight: '1000px',
   background: 'linear-gradient(111.19deg, #313637 17.69%, #262A2B 81.29%)',
 });
 
