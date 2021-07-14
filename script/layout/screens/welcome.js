@@ -6,7 +6,7 @@ import theme, { font } from '../theme.js';
 // Content
 
 const greeting = dom.span('Hi.').style({
-  fontSize: '288px',
+  fontSize: '204px',
   fontWeight: 'bold',
   marginLeft: '-13px',
 });
@@ -24,7 +24,7 @@ const rightGroup = dom.div(introduction, chatButton).style({
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'space-between',
-  padding: '65px',
+  padding: '47px',
 });
 
 const content = dom.section(greeting, rightGroup).style({
@@ -33,7 +33,7 @@ const content = dom.section(greeting, rightGroup).style({
   minWidth: '1000px',
   maxWidth: '1300px',
   margin: 'auto',
-  padding: '0 48px',
+  padding: '0 58px',
 });
 
 // Content
@@ -80,15 +80,16 @@ function ChatButton(text, icon) {
     fontSize: font.m,
     color: theme.accentText,
   });
-  const iconElement = dom.img(icon, 'chat icon');
+  const iconElement = dom.img(icon, 'chat icon', 30);
 
   return dom.button(textElement, iconElement).style({
     background: theme.action,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '164px',
-    height: '55px',
+    width: '113px',
+    height: '45px',
+    paddingLeft: '5px',
     borderRadius: '28px',
     fontWeight: 'bold',
     letterSpacing: '1px',

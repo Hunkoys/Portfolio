@@ -33,7 +33,7 @@ const emailBox = dom.div(email).style({
 const buttonGroup = dom.div(openApp, copy).style({
   display: 'flex',
   justifyContent: 'space-between',
-  width: '300px',
+  width: '220px',
 });
 
 const screen = dom.section(emailBox, buttonGroup).style({
