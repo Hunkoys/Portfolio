@@ -4,8 +4,8 @@ import CircleFrame from '../components/about/CircleFrame.js';
 import theme from '../theme.js';
 
 const DEFAULT = undefined;
-
-const start = CircleFrame('pics/face.jpg', 'Profile Picture', DEFAULT, 0, -40).style({
+//330, -60, -20
+const start = CircleFrame('pics/face.jpg', 'Profile Picture', 350, -73, -25).style({
   position: 'relative',
   left: '335px',
   marginBottom: '30px',
